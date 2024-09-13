@@ -4,7 +4,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(164, 233, 233);
+  background-image: url("https://collectionapi.metmuseum.org/api/collection/v1/iiif/436528/1447063/main-image"); /* Set your image path here */
+  background-size: cover; /* Ensures the image covers the whole background */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background: contain;
 }
 
 h1 {

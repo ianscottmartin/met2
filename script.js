@@ -18,6 +18,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentIndex = 0;
     let currentObjectIDs = [];
+    async function setRandomBackground() {
+        const SEARCH_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/search';
+        const response = await axios.get(`${SEARCH_URL}?q=art&hasImages=true`);
+        const objectIDs = response.data.objectIDs;
+
+        if (objectIDs.length > 0) {
+            const randomID = objectIDs[Math.floor(Math.random() * objectIDs.length)];
+            const objectResponse = await axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomID}`);
+            const { primaryImage } = objectResponse.data;
+
+            if (primaryImage) {
+                document.body.style.backgroundImage = `url('${primaryImage}')`;
+            }
+        }
+    }
+
+    // Call the function when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        setRandomBackground();
+        // Other initialization code here...
+    });
 
     // Add event listener for form submission
     form.addEventListener('submit', async function (event) {
