@@ -1,3 +1,20 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: aqua;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+  background-color: #8d1616; /* Example background color */
+  color: rgb(129, 232, 241);
+}
+
 /* Container for the art list */
 #art-list {
   display: flex;
@@ -10,11 +27,13 @@
 
 /* Each list item will be a flexbox item */
 #art-list li {
-  width: 200px; /* Set a fixed width for each item */
+  width: 100%; /* Default width for mobile */
+  max-width: 200px; /* Max width to prevent items from growing too large */
   border: 1px solid #ddd;
   padding: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  background-color: #fff; /* White background for each item */
 }
 
 /* Images will keep their aspect ratio and fit within the width */
@@ -35,10 +54,6 @@
   font-size: 14px;
   margin: 3px 0;
 }
-#art-list p {
-  font-size: 14px;
-  margin: 3px 0;
-}
 
 #art-list .on-display {
   color: green;
@@ -47,4 +62,59 @@
 
 #art-list .not-on-display {
   color: red;
+}
+/* Button Styles */
+.search-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff; /* Blue color for the button */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  border-radius: 50px; /* Makes the button round */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.search-button:hover {
+  background-color: #0056b3; /* Darker blue for hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.search-button:focus {
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add a custom focus shadow */
+}
+
+/* Media Queries */
+
+/* For tablets and small desktops (min-width: 768px) */
+@media (min-width: 768px) {
+  #art-list li {
+    width: calc(50% - 10px); /* Two items per row with gap adjustment */
+    max-width: 250px;
+  }
+}
+
+/* For larger desktops (min-width: 1024px) */
+@media (min-width: 1024px) {
+  #art-list li {
+    width: calc(33.33% - 20px); /* Three items per row with gap adjustment */
+    max-width: 300px;
+  }
+
+  #art-list {
+    gap: 30px; /* Increase spacing between items for larger screens */
+  }
+}
+
+/* For very large screens (min-width: 1440px) */
+@media (min-width: 1440px) {
+  #art-list li {
+    width: calc(25% - 30px); /* Four items per row with gap adjustment */
+    max-width: 350px;
+  }
+
+  #art-list {
+    gap: 40px; /* Increase spacing between items further for very large screens */
+  }
 }
